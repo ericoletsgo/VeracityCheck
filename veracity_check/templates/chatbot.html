@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="static/css/styles.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Chat</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: scroll;
+    background-color: #fff;
+  }
+  .user-message {
+    background-color: #e2f0cb;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  .bot-message {
+    background-color: #c1e1ff;
+    padding: 5px 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  .input-container {
+    display: flex;
+    margin-top: 20px;
+  }
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+    .footer-links {
+            text-align: center;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            padding: 10px 0;
+            
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+    }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="https://www.ai-camp.org/" target="_blank">
+              <img src="static/css/aicamplogo.png" alt="AI Camp" width="100" height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link " aria-current="page" href="{{url_for('index')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url_for('about')}}">About Us</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{{url_for('team')}}">Team Members</a></li>
+                   <li class="nav-item"><a class="nav-link active" href="{{url_for('chatbot')}}">Chatbot</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+  <div class="container" id="generator">
+    <h1>Let's Chat about the latest news!</h1>
+    <div class="chat-box" id="chatBox">
+      <div class="bot-message">Hi there! I'm your newsbot. How can I help you today?</div>
+    </div>
+    <div class="text-center mt-5">
+        <form method="post" action="/chatbot1" enctype="application/x-www-form-urlencoded" class="d-flex">
+        <textarea name="userInput" id="userInput" class="flex-grow-1" rows = "10" placeholder="Type the recent news you would like to know...">{{input}}</textarea>
+        <button type="submit" id="sendButton">Send</button>
+        </form>
+        <br>
+        <label style="text-align: left !important;">Answer:</label>
+      <br>
+        <form>
+        <textarea id="exampleFormControlTextarea2" rows="10" cols="90" style="width: 700px !important;">{{output}}</textarea>
+        </form>
+    <div class="footer-links">
+      <a href="https://github.com/Sunil-Rufus/news_data/tree/Griffin" target="_blank">GitHub</a> 
+    </div>
+  </div>
+</body>
+</html>
