@@ -2,7 +2,7 @@
 ## Fake News Detection & Chatbot
 
 ## Overview
-This project is a Flask-based web application that integrates a BERT-based fake news classifier and a chatbot utilizing Haystack's FAISS document store. The app allows users to check whether a news article is real or fake and interact with an AI-powered chatbot for question answering.
+A Flask-based web application that integrates a BERT-based fake news classifier and a chatbot utilizing Haystack's FAISS document store. The app allows users to check whether a news article is real or fake and interact with an AI-powered chatbot for question answering.
 
 ## Features
 - **Fake News Detection:** Uses a fine-tuned BERT model to classify news as real or fake.
@@ -83,8 +83,7 @@ pip install faiss-gpu
 
 # Dataset
 
-![Screenshot 2023-08-17 at 10.35.33 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b84d530-0db6-4f7c-8953-27eb55804e7e/Screenshot_2023-08-17_at_10.35.33_AM.png)
-
+<img width="1119" alt="Screenshot 2023-08-17 at 10 35 33 AM" src="https://github.com/user-attachments/assets/80f61dd0-45af-4c93-9ca0-122560dd7645" />
 - Two files and eight columns, one file with articles that are fake and another with ones that are true.
 - There are four columns in each file:
     1. Title of the article
@@ -136,6 +135,18 @@ pip install faiss-gpu
     - Use the learned embeddings to assess the similarity of a news article's language with known reliable and unreliable sources.
     - Combine word2vec-based similarity scores with other classification models to enhance the overall fake news detection system.
     - Incorporate sentiment analysis techniques to identify biased language and opinions within news articles.
+  
+For classification:
+
+• MultiNomial Naive Bayes - classifier algorithm
+
+• **Support Vector Machine - used to train model**
+
+• **Passive Aggressive Classifier - online algorithm that learns from massive streams of data. The idea is to get an example, update the classifier, and throw away the example.**
+
+**Count Vectorizer - The count vectorizer tokenizes a collection of documents and builds a vocabulary of unique words. It can also encode new documents using this vocabulary.**
+
+**Tfidf Transformer - enrich dataset; “term frequency-inverse document frequency”, meaning the weight assigned to each token not only depends on its frequency in a document but also how recurrent that term is in the entire corpora.**
 
 # Evaluation Metrics
 
@@ -189,51 +200,6 @@ Find a bar when it come towards our f1 score, if we repeatedly get above it then
         - list of resources used (google colab, datasets, etc.)
 - brief section on importance of critical thinking & limitations of model below the output on detector page
 
-# Minimum Viable Product
-
-**Objective:** Develop a basic system that identifies potential fake news articles based on textual features.
-
-1. **Data Collection and Preprocessing:**
-    - Gather a small dataset of labeled news articles, including both genuine and fake news examples.
-    - Preprocess the text data by tokenizing, removing stopwords, and converting to lowercase.
-2. **Feature Extraction:**
-    - Extract basic textual features such as word frequency, TF-IDF scores, and n-grams.
-3. **Model Building:**
-    - Choose a simple classification algorithm (e.g., Naive Bayes or Logistic Regression).
-    - Split the dataset into training and testing sets for model evaluation.
-4. **Model Training and Evaluation:**
-    - Train the chosen classifier on the training dataset using the extracted features.
-    - Evaluate the model's performance on the testing dataset using metrics like accuracy, precision, recall, and F1-score.
-5. **Baseline Demonstration:**
-    - Develop a basic user interface (UI) where users can input a news article's text.
-    - Upon submission, the UI should display a binary classification result indicating whether the article is "Likely Genuine" or "Potentially Fake" based on the trained model.
-6. **Feedback Collection:**
-    - Include a simple feedback mechanism for users to report misclassifications or provide additional context.
-7. **Iterative Refinement:**
-    - Collect user feedback and misclassification reports to improve the model's accuracy and handling of edge cases.
-    - Regularly update the model using new data and refined features.
-
-# Potential Roadblocks
-
-- **Data Quality and Availability:** Might be difficult to obtain a reliable dataset which is reliable of **ALL** types of fake news; resulting in model to struggle to generalize to new, unseen types of misinformation.
-- **Fake news strategies may be evolving:** meaning that creators can use different strategies, so the model might be effective against certain tactics but struggle with novel techniques. (**Models might be trained on older datasets, so may not work as well for new**)
-- **Model Selection and Tuning:**
-    
-    Selecting the appropriate model architecture and hyperparameters might require experimentation and tuning to achieve optimal results.
-    
-    **Explaining Model Decisions:**
-    
-    - Interpreting why a model classified a certain article as fake or genuine can be challenging, leading to issues of trust and transparency.
-    
-    **Biased Evaluation Metrics:**
-    
-    Metrics that don't account for false positives or false negatives might lead to skewed interpretations of model effectiveness.
-    
-    **Other:**
-    
-    Issues regarding planning: Not reaching deadline, etc.
-    
-    Lack of knowledge: more time needed to learn 
     
 
 # Why this Project?
