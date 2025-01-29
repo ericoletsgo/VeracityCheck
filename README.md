@@ -1,4 +1,77 @@
 # VeracityCheck
+## Fake News Detection & Chatbot
+
+## Overview
+This project is a Flask-based web application that integrates a BERT-based fake news classifier and a chatbot utilizing Haystack's FAISS document store. The app allows users to check whether a news article is real or fake and interact with an AI-powered chatbot for question answering.
+
+## Features
+- **Fake News Detection:** Uses a fine-tuned BERT model to classify news as real or fake.
+- **Chatbot with Haystack:** Implements a chatbot that retrieves answers from a FAISS document store using an embedding retriever and a FARM reader.
+- **Web Interface:** Flask-based frontend with multiple pages including Home, About, Team, and Chatbot.
+
+## Installation
+### Prerequisites
+Ensure you have the following installed:
+- Python 3.8+
+- pip (Python package manager)
+- Virtual environment (optional but recommended)
+- GPU (optional but recommended for model inference)
+
+### Setup Instructions
+1. **Clone the Repository:**
+   ```bash
+   git clone <repo-url>
+   cd <repo-folder>
+   ```
+2. **Create a Virtual Environment (Optional but Recommended):**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+3. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Required Dependencies
+Ensure you have the following Python packages installed:
+```bash
+pip install flask torch transformers numpy json haystack-ai faiss-cpu
+```
+If using a GPU, install `faiss-gpu` instead of `faiss-cpu`:
+```bash
+pip install faiss-gpu
+```
+
+## Running the Application
+1. **Start the Flask App:**
+   ```bash
+   python app.py
+   ```
+2. **Access the Application:**
+   Open a browser and go to:
+   ```
+   http://127.0.0.1:5000
+   ```
+
+## File Structure
+- `app.py` - Main Flask application
+- `templates/` - HTML templates for frontend pages
+- `static/` - Static files (CSS, JS, etc.)
+- `c3_new_model_weights.pt` - Pretrained BERT model weights for fake news classification
+- `news_faiss` - FAISS document store for chatbot retrieval
+
+## Usage
+### Fake News Detection
+1. Navigate to the homepage (`/`).
+2. Enter a news snippet in the input box.
+3. Submit the form to receive a classification result (Real or Fake).
+
+### Chatbot
+1. Navigate to the chatbot page (`/chatbot`).
+2. Enter a query related to news topics.
+3. The chatbot retrieves the most relevant answer from the FAISS document store.
+
 
 # Team Members:
 
@@ -49,27 +122,16 @@
     - Convert abbreviations like "etc." to "et cetera" for accurate analysis.
 13. **Convert to Word Vectors:**
     - Transform the cleaned text into numerical representations (word vectors) suitable for input to machine learning models. This might involve techniques like TF-IDF or word embeddings like Word2Vec or GloVe.
+   
 
 # Models
 
-**Enhancing Fake News Detection Using Advanced NLP Models**
-
-1. **GPT (Generative Pre-trained Transformer):**
-    - Utilize GPT's sequence prediction abilities to analyze and understand the coherence of news articles.
-    - Train GPT on a diverse dataset of both genuine and fake news to learn language patterns associated with each.
-    - Generate text completions to assess if an article's content aligns with factual information or veers into misleading territory.
-    - Leverage GPT's fine-tuned model for classifying articles as genuine or potentially fake.
-2. **BERT (Bidirectional Encoder Representations from Transformers):**
+1. **BERT (Bidirectional Encoder Representations from Transformers):**
     - Fine-tune BERT on a large dataset containing labeled examples of fake and genuine news articles.
     - Leverage BERT's bidirectional context understanding to capture nuanced language patterns that indicate bias or misinformation.
     - Develop a binary classification model using the final BERT embeddings to classify articles as reliable or suspicious.
     - Integrate BERT's understanding of context to identify subtler forms of fake news, such as those using misleading language.
-3. **SQuAD (Stanford Question Answering Dataset):**
-    - Adapt SQuAD-style question-answering techniques to verify the factual accuracy of news articles.
-    - Automatically generate questions based on the content of an article and then extract answers from the article itself.
-    - Use the consistency and correctness of extracted answers to gauge the reliability of the article's content.
-    - Evaluate the model's ability to accurately answer factual questions about the article's context.
-4. **Text Classification Models (e.g., word2vec):**
+2. **Text Classification Models (e.g., word2vec):**
     - Train text classification models like word2vec on a wide variety of news sources to capture language patterns associated with different perspectives.
     - Use the learned embeddings to assess the similarity of a news article's language with known reliable and unreliable sources.
     - Combine word2vec-based similarity scores with other classification models to enhance the overall fake news detection system.
@@ -93,18 +155,18 @@ Find a bar when it come towards our f1 score, if we repeatedly get above it then
 
 # Tech Stack
 
-- programming languages:
+- Programming languages:
     - Python
-- frameworks & libraries:
+- Frameworks & libraries:
     - NLTK
     - Word2Vec
     - Pandas
-- web development:
+- Web development:
     - gradio
     - CSS
     - HTML
     - Bootstrap
-- code editors:
+- Code editors:
     - google collab.
     - replit
 
@@ -181,12 +243,7 @@ Find a bar when it come towards our f1 score, if we repeatedly get above it then
 - To promote critical thinking among news/media consumers
 - To create a better informed generation of voters/citizens
 
-# What do you expect to achieve?
-
-- **Objective:** Develop a system for identifying genuine news articles and distinguishing them from fake news, particularly during the upcoming election season.
-- **Importance:** Address the prevalent issue of biased news articles produced by news outlets, which can potentially misinform and influence public opinions.
-- **Focus:** Concentrate on building a tool that effectively sifts through news articles to identify inherent biases, helping individuals make more informed decisions.
-- **Election Season Emphasis:** Given the propensity for news outlets to produce biased content during election periods, the project's significance is heightened during this time.
-- **Outcome:** Aim to create a solution that enhances an individual's ability to differentiate between biased and unbiased news articles, thereby reducing the impact of fake news on their opinions.
-
-By achieving these goals, the project intends to empower people with more accurate information, promoting critical thinking and informed participation in the democratic process.
+## Potential Improvements
+- **Enhance Fake News Model:** Improve accuracy by training on a larger dataset.
+- **Optimize Chatbot Retrieval:** Implement a more sophisticated ranking mechanism.
+- **Deploy Using Docker & Terraform:** Containerize the application for cloud deployment.
